@@ -27,6 +27,7 @@ group :development, :test do
   gem "pry-rails"
   gem "awesome_print"
   gem "rspec-rails"
+  gem "mailcatcher"
 end
 
 group :development do
@@ -34,7 +35,6 @@ group :development do
   gem "listen", "~> 3.3"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
-  gem "mailcatcher"
 end
 
 group :test do

@@ -1,0 +1,40 @@
+<div class="bg-gray-100 flex justify-center items-center h-screen">
+    <!-- Left: Image -->
+  <div class="w-1/2 h-screen hidden lg:block">
+    <img src="https://plus.unsplash.com/premium_photo-1683140900667-15d8b750bda3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI5fHx2ZXRlcmluYXJpb3N8ZW58MHx8MHx8fDA%3D" alt="" class="object-cover h-full w-full">
+  </div>
+<!-- Right: Login Form -->
+  <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Entrar</h1>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="mb-4">
+          <%= f.input :email, 
+                      required: false, 
+                      autofocus: true, 
+                      input_html: { autocomplete: "email" }, 
+                      placeholder: "E-mail", 
+                      class: "block text-sm py-3 px-4 rounded-lg w-full" 
+          %>
+        </div>
+        <div class="mb-4">
+          <%= f.input :password, 
+                      required: false, 
+                      input_html: { autocomplete: "current-password" }, 
+                      placeholder: "Senha", 
+                      class: "block text-sm py-3 px-4 rounded-lg w-full" 
+          %>
+        </div>
+        <div class="mb-4 flex items-center">
+          <%= f.input :remember_me, label: "Lembrar-me", class: "ml-2", as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        <div class="mb-6 text-blue-500">
+          <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "hover:underline" %>
+        </div>
+        <%= f.button :submit, "Entrar", class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full" %>
+        <div class="mt-6 text-blue-500 text-center">
+          <%= link_to "Cadastrar-se agora", new_registration_path(resource_name), class: "hover:underline" %>
+        </div>
+    <% end %>
+  </div>
+</div>
