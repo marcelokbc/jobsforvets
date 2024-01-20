@@ -1,27 +1,41 @@
-<h2>Change your password</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <%= f.input :reset_password_token, as: :hidden %>
-  <%= f.full_error :reset_password_token %>
-
-  <div class="form-inputs">
-    <%= f.input :password,
-                label: "New password",
+<div class="bg-gray-100 flex justify-center items-center h-screen">
+    <!-- Left: Image -->
+  <div class="w-1/2 h-screen hidden lg:block">
+    <img src="https://images.unsplash.com/photo-1601758066233-2dc181fb3380?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNhZXMlMjBlc3F1ZWNpZG9zfGVufDB8fDB8fHww" alt="" class="object-cover h-full w-full">
+  </div>
+<!-- Right: Login Form -->
+  <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Trocar senha</h1>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+    <div class="mb-4">
+      <%= f.input :reset_password_token, as: :hidden %>
+      <%= f.full_error :reset_password_token, 
+                      class: "w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+      %>
+    </div>
+    <div class="mb-4">
+      <%= f.input :password,
+                label: "Nova senha",
                 required: true,
                 autofocus: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                label: "Confirm your new password",
+                input_html: { autocomplete: "new-password" },
+                class: "w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+      %>
+    </div>
+    <div class="mb-4">
+      <%= f.input :password_confirmation,
+                label: "Confirme a nova senha",
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password" },
+                class: "w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+      %>
+    </div>
+    <%= f.button :submit, "Alterar Senha", class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full" %>
+    <% end %>
+    <div class="mt-6 text-blue-500 text-center">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

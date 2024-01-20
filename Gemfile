@@ -27,7 +27,6 @@ group :development, :test do
   gem "pry-rails"
   gem "awesome_print"
   gem "rspec-rails"
-  gem "mailcatcher"
 end
 
 group :development do

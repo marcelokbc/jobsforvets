@@ -7,7 +7,7 @@
   <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
     <h1 class="text-2xl font-semibold mb-4 text-center">Esqueceu sua senha?</h1>
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    <%= f.error_notification %>
+    <%= f.error_notification class: "text-red-500 font-semibold text-sm mb-4" %>
     <div class="mb-4">
       <%= f.input :email, 
                   required: true, 
@@ -22,25 +22,3 @@
     <% end %>
   </div>
 </div>
-
-
-
-
-<h2>Forgot your password?</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

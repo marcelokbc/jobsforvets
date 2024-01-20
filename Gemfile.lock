@@ -69,7 +69,6 @@ GEM
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     awesome_print (1.9.2)
-    base64 (0.2.0)
     bcrypt (3.1.20)
     bindex (0.8.1)
     bootsnap (1.17.1)
@@ -88,7 +87,6 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
-    daemons (1.4.1)
     date (3.3.4)
     devise (4.9.3)
       bcrypt (~> 3.0)
@@ -98,16 +96,11 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     erubi (1.12.0)
-    eventmachine (1.2.7)
     ffi (1.16.3)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    haml (6.3.0)
-      temple (>= 0.8.2)
-      thor
-      tilt
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -117,7 +110,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.7.1)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -129,24 +121,12 @@ GEM
       net-imap
       net-pop
       net-smtp
-    mailcatcher (0.2.4)
-      eventmachine
-      haml
-      i18n
-      json
-      mail
-      sinatra
-      skinny (>= 0.1.2)
-      sqlite3-ruby
-      thin
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.21.1)
     msgpack (1.7.2)
-    mustermann (3.0.0)
-      ruby2_keywords (~> 0.0.1)
     net-imap (0.4.9.1)
       date
       net-protocol
@@ -174,9 +154,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (2.2.8)
-    rack-protection (3.2.0)
-      base64 (>= 0.1.0)
-      rack (~> 2.2, >= 2.2.4)
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.8)
@@ -234,7 +211,6 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
-    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -243,14 +219,6 @@ GEM
     simple_form (5.3.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
-    sinatra (3.2.0)
-      mustermann (~> 3.0)
-      rack (~> 2.2, >= 2.2.4)
-      rack-protection (= 3.2.0)
-      tilt (~> 2.0)
-    skinny (0.2.2)
-      eventmachine (~> 1.0)
-      thin
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -262,20 +230,11 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.7.0-x86_64-darwin)
-    sqlite3-ruby (1.3.3)
-      sqlite3 (>= 1.3.3)
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
     tailwindcss-rails (2.3.0-x86_64-darwin)
       railties (>= 6.0.0)
-    temple (0.10.3)
-    thin (1.8.2)
-      daemons (~> 1.0, >= 1.0.9)
-      eventmachine (~> 1.0, >= 1.0.4)
-      rack (>= 1, < 3)
     thor (1.3.0)
-    tilt (2.3.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
@@ -314,7 +273,6 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   listen (~> 3.3)
-  mailcatcher
   pg (~> 1.1)
   pry-byebug
   pry-rails
