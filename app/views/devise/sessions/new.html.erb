@@ -8,20 +8,6 @@
     <h1 class="text-2xl font-semibold mb-4 text-center">Entrar</h1>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= f.error_notification %>
-        <% if f.errors.any? %>
-          <div id="error_explanation" data-turbo-cache="false">
-            <h2>
-              <%= I18n.t("errors.messages.not_saved",
-                         count: f.errors.count,
-                         resource: resource.class.model_name.human.downcase) %>
-            </h2>
-            <ul>
-              <% f.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
         <div class="mb-4">
           <%= f.input :email, 
                       required: false, 
