@@ -6,7 +6,7 @@ label {
   @apply block text-gray-600 text-base mb-2;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], input[type="url"] {
   @apply border border-gray-300 rounded-md;
   @apply focus:outline-none focus:border-blue-500;
   @apply block w-full sm:text-sm border-gray-300 rounded-md;
