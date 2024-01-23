@@ -1,4 +1,4 @@
-<div>
+<div data-controller="nav">
   <div class="antialiased bg-gray-200 dark-mode:bg-gray-900">
     <div class="w-full text-gray-700 bg-dark dark-mode:text-gray-200 dark-mode:bg-gray-800">
       <div class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 z-50">
@@ -27,7 +27,7 @@
                   <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
                   <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
                   <%= button_to destroy_user_session_path, method: :delete, class: "text-gray-700 block w-full px-4 py-2 text-left text-sm cursor-pointer", role: "menuitem", tabindex: "-1", id: "menu-item-3" do %>
-                    Sign out
+                    Sair
                   <% end %>
                 </div>
               </div>
@@ -38,14 +38,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  const buttonMenu = document.getElementById('button-menu')
-  const menuDropdown = document.getElementById('menu-dropdown')
-  const arrowIcon = document.getElementById('arrow-icon')
-
-  buttonMenu.addEventListener('click', () => {
-    menuDropdown.classList.toggle('hidden')
-    arrowIcon.classList.toggle('rotate-up')
-  })
-</script>
