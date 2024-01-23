@@ -12,7 +12,6 @@ export default class extends Controller {
             const alertDismissAfterValue = alert.dataset.alertDismissAfterValue;
   
             alert.classList.add('hidden');
-  
             setTimeout(() => {
               alert.remove();
             }, alertDismissAfterValue);
