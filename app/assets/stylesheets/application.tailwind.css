@@ -12,13 +12,18 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
   @apply block w-full sm:text-sm border-gray-300 rounded-md;
 }
 
+textarea {
+  width: 100%;
+}
+
 input[type="checkbox"] {
   @apply rounded border-gray-300 text-blue-500 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
 }
 
 .select {
   border: none;
-  border-radius: 5px
+  border-radius: 5px;
+  width: 100%;
 }
 
 .rotate-down {
