@@ -1,0 +1,83 @@
+<section class="py-8 bg-[#f5f5f5]">
+  <div class="container px-10 mx-auto flex justify-center">
+    <div class="pb-16 pt-12 border border-dark-blue rounded-5xl w-10/12">
+      <p class="text-3xl font-heading font-sourcesans font-medium pl-16">Publicar vaga</p>
+        <div class="flex flex-wrap px-9 mb-8 md:mb-0 justify-center">
+          <div class="mt-5 md:col-span-2 md:mt-0">
+            <%= simple_form_for [@position], defaults: { disabled: action_name == 'show' }, remote: true do |f| %>
+              <%= f.error_notification %>
+              <div class="overflow-hidden">
+                <div class="px-4 py-5 sm:p-6">
+                  <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6">
+                      <%= f.input :name,
+                              placeholder: "Nome",
+                              class: "block shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                          %>
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                      <%= f.input :career,
+                              as: :select,
+                              collection: @careers,
+                              label_method: :second,
+                              value_method: :first,
+                              include_blank: false,
+                              selected: @position.career,
+                              class: "shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                          %>
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                      <%= f.input :contract,
+                                  as: :select,
+                                  collection: @contracts,
+                                  label_method: :second,
+                                  value_method: :first,
+                                  include_blank: false,
+                                  selected: @position.contract,
+                                  class: "shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                          %>
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                      <%= f.input :remote %>
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                      <%= f.input :publish %>
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                      <%= f.input :city,
+                              placeholder: "Cidade",
+                              class: "shadow appearance-none border border-gray-300 rounded-md w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                          %>
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                      <%= f.input :state,
+                            placeholder: "Estado",
+                            class: "shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                      %>
+                    </div>
+                    <div class="col-span-6">
+                      <%= f.input :summary,
+                            placeholder: "Resumo da vaga",
+                            class: "shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                        %>
+                    </div>
+                    <div class="col-span-6">
+                      <%= f.input :description,
+                            placeholder: "Descrição da vaga",
+                            class: "shadow appearance-none border border-gray-300 py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                      %>
+                    </div>
+                    
+                      <% if action_name == 'show' %>
+                        <%= link_to "EDITAR", edit_position_path(@position), class: "cursor-pointer mr-2 inline-flex w-auto px-8 h-8  items-center justify-center bg-[F5F5F5] border border-dark-blue rounded-lg text-dark-blue font-sourcesans text-base hover:bg-green-300 mt-5" %>
+                      <% else %>
+                        <%= f.submit "SALVAR", class: "cursor-pointer mr-2 inline-flex w-auto px-8 h-8  items-center justify-center bg-[F5F5F5] border border-dark-blue rounded-lg text-dark-blue font-sourcesans text-base bg-green-300 mt-5" %>
+                      <% end %>
+                      <%= link_to "VOLTAR", positions_path(@position), class: "cursor-pointer mr-2 inline-flex w-auto px-8 h-8 items-center justify-center bg-[F5F5F5] border border-dark-blue rounded-lg text-dark-blue font-sourcesans text-base mt-5 hover:bg-[#a0f5ed]" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
