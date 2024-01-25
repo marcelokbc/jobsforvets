@@ -1,4 +1,77 @@
-<div>
-  <h1 class="font-bold text-4xl">Positions#index</h1>
-  <p>Find me in app/views/positions/index.html.erb</p>
-</div>
+<section class="py-8 bg-[#f5f5f5]">
+  <div class="container px-4 mx-auto flex justify-center">
+    <div class="p-7 pb-16 pt-12 border border-dark-blue rounded-5xl w-11/12">
+      <div class="flex flex-wrap px-9 md:mb-0">
+        <div class="w-full md:w-1/2">
+          <h2 class="text-3xl font-heading font-sourcesans font-medium">Minhas vagas</h2>
+        </div>
+        <div class="w-full md:w-1/2 max-w-max md:ml-auto">
+          <%= link_to "NOVA VAGA", new_position_path, class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full" %>
+        </div>
+      </div>
+
+        <!--<div class="flex items-center justify-end mt-5 pr-7">
+          <form>
+            <%# <%= search_form_for @q, url: admin_students_path do |f| %> %>
+              <div class="relative text-gray-600 focus-within:text-gray-400">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <%# <%= f.submit "", class: "p-1 focus:outline-none focus:shadow-outline" %> %>
+                </span>
+                <%# <%= f.search_field :first_name_or_cpf_or_email_cont, class: "py-2 w-72 text-sm text-white rounded-md pl-10 focus:outline-none focus:bg-white focus:text-dark-blue", placeholder:"Pesquisar por nome, cpf ou email", autocomplete: "off" %> %>
+              </div>
+            <%# <% end %> %>
+          </form>
+        </div> -->
+
+        <div class="overflow-x-auto my-10">
+          <div class="inline-block min-w-full overflow-hidden ">
+            <div class="overflow-x-auto pl-5">
+              <table class="table table-zebra w-full my-4">
+                <thead>
+                  <tr>
+                    <th class="text-base font-medium">Título</th>
+                    <th class="text-base font-medium">Carreria</th>
+                    <th class="text-base font-medium">Local</th>
+                    <th class="text-base font-medium">Tipo de contrato</th>
+                    <th class="text-base font-medium">Candidaturas</th>
+                    <th class="text-base font-medium">Ações</th>
+                  </tr>
+                </thead>
+
+              <tbody>
+              <% @positions.each do |position| %>
+                <tr>
+                  <td class="font-sourcesans text-lg bg-[#f5f5f5]"><%= position.name  %></td>
+                  <td class="font-sourcesans font-medium mt-2"> <%= position.career %></td>
+                  <td class="font-sourcesans font-medium mt-2"> <%= position.remote %></td>
+                  <td class="font-sourcesans font-medium mt-2"> <%= position.contract %></td>
+                  <td class="font-sourcesans font-medium mt-2"> 1( ver detalhes)</td>
+                  <td>
+                    <div class="inline-flex">
+                      <%= link_to position_path(position), class: "mr-2 inline-flex w-auto px-8 h-8 items-center justify-center bg-[F5F5F5] border border-dark-blue rounded-lg text-dark-blue font-sourcesans text-base hover:bg-green-300" do%>
+                        <i class="fa fa-list-ul pr-2"></i>
+                          DETALHES
+                      <% end %>
+
+                      <%= link_to edit_position_path(position), class: "mr-2 inline-flex w-auto px-8 h-8 items-center justify-center bg-[F5F5F5] border border-dark-blue rounded-lg text-dark-blue font-sourcesans font-medium hover:bg-green-300" do%>
+                        <i class="fa-regular fa-pen-to-square pr-2"></i>
+                          EDITAR
+                      <% end %> 
+
+                      <%# <%= button_to "EXCLUIR", positions_path(position), method: :delete, form: { data: { turbo_confirm: "Você tem certeza?"}}, class: "mr-2 inline-flex w-auto px-8 h-8  items-center justify-center bg-[F5F5F5] border border-pink rounded-lg text-pink font-sourcesans font-medium hover:bg-pink hover:text-white" %>
+                    </div>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+                  <div class="border-b-2 border-dark-blue"></div>
+            </table>
+            <%# <%== pagy_nav(@pagy) %> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

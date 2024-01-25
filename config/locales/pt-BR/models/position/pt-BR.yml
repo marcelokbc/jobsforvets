@@ -1,0 +1,29 @@
+pt-BR:
+  activerecord:
+    models:
+      position: Vagas
+    attributes:
+      position: 
+        name: Título da vaga
+        career: Carreira
+        careers:
+          general_practitioners: Clínica Geral
+          surgery: Cirurgia
+          ortophdics: Ortopedia
+          dermatology: Dermatologia
+          cardiology: Cardiologia
+          ophthalmology: Oftalmologia
+          nutriton: Nutrição
+          other: Outros
+        contract: Tipo de contrato
+        contracts:
+          clt: CLT
+          pj: PJ
+          match: A combinar
+        remote: Está vaga é totalmente remota?
+        city: Cidade
+        state: Estado
+        summary: Resumo da descrição (até 360 caracteres)
+        description: Descrição completa
+        publish: Está vaga é pública?
+
