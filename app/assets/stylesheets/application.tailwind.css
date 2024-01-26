@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* inputs */
 label {
   @apply block text-gray-600 text-base mb-2;
 }
@@ -26,6 +27,7 @@ input[type="checkbox"] {
   width: 100%;
 }
 
+/* css navbar */
 .rotate-down {
   transform: rotate(0deg);
   transition: transform 0.7s ease;
@@ -36,3 +38,4 @@ input[type="checkbox"] {
   transition: transform 0.5s ease;
 }
 
+@import 'actiontext.css';

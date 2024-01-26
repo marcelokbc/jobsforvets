@@ -63,14 +63,23 @@
                             class: "shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
                       %>
                     </div>
-                    <div class="col-span-6">
-                      <%= f.input :summary,
-                            placeholder: "Resumo da vaga",
-                            class: "shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                    <div class="col-span-6 flex items-center"> 
+                      <div data-controller="summary" 
+                      class="flex-1 relative rounded-md shadow-sm">
+                        <%= f.input :summary,
+                              placeholder: "Resumo da vaga",
+                              maxlength: 360,
+                              input_html: { class: "count-textarea", rows: 4 },
+                              class: "form-input py-2 px-3 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                         %>
+                        <div id="the-count" class="absolute inset-y-5 right-0 pr-3 flex items-center pointer-events-none">
+                          <span id="current" class="text-gray-500 text-sm">0</span>
+                          <span id="maximum" class="text-gray-500 text-sm">/ 360</span>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-span-6">
-                      <%= f.input :description,
+                      <%= f.rich_text_area :description,
                             placeholder: "Descrição da vaga",
                             class: "shadow appearance-none border border-gray-300 py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
                       %>

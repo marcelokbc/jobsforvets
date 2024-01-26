@@ -5,5 +5,7 @@ class Position < ApplicationRecord
                 :ophthalmology, :nutriton, :other]
   enum contract: [:clt, :pj, :match]
 
-  validates :name, :career, :contract, :city, :state, :summary, :description, presence: true
+  has_rich_text :description
+  
+  validates :name, :career, :contract, :city, :state, :summary, presence: true
 end
