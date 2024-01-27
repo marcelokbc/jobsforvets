@@ -7,7 +7,7 @@
   <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
     <h1 class="text-2xl font-semibold mb-4 text-center">Cadastre-se</h1>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification class: "text-red-500 font-semibold text-sm mb-4" %>
+    <%= f.error_notification %>
     <div class="mb-4">
       <%= f.input :email, 
                   required: true,
