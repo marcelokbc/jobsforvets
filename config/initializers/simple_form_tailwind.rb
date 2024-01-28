@@ -6,7 +6,7 @@ SimpleForm.setup do |config|
     config.button_class = 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
   
     # Define the default class of the input wrapper of the boolean input.
-    config.boolean_label_class = ''
+    config.boolean_label_class = 'block text-sm font-medium text-gray-600'
   
     # How the label text should be generated altogether with the required text.
     config.label_text = lambda { |label, required, explicit_label| "#{label} #{required}" }
@@ -149,7 +149,8 @@ SimpleForm.setup do |config|
       radio_buttons: :vertical_collection,
       range:         :vertical_range,
       time:          :vertical_multi_select,
-      select:        :select
+      select:        :select,
+      label:         :vertical_form,
     }
   end
   
