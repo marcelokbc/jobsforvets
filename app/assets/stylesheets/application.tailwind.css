@@ -1,6 +1,9 @@
+@import 'actiontext.css';
+@import './pagy_nav.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 /* inputs */
 label {
@@ -38,4 +41,10 @@ input[type="checkbox"] {
   transition: transform 0.5s ease;
 }
 
-@import 'actiontext.css';
+/* css index card */
+.share-copy-item {
+  background-color: #72689c;
+  border-color: #72689c;
+  padding: 5px;
+  border-radius: 5px;
+}

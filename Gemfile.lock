@@ -140,6 +140,8 @@ GEM
     nokogiri (1.16.0-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -273,6 +275,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   listen (~> 3.3)
+  pagy
   pg (~> 1.1)
   pry-byebug
   pry-rails
