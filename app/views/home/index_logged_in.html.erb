@@ -4,33 +4,32 @@
       <h2 class="text-3xl font-heading font-sourcesans font-medium text-center"> JobsForVets</h2>
       <p class="text-gray-500 text-center">Encontre o seu próximo emprego</p>
         <div class="flex flex-row justify-evenly items-center mt-5 p-7">
-  <%= search_form_for @q, url: root_path, method: :get do |f| %>
-    <div class="flex space-x-11">
-      <div>
-        <%= f.label :name_cont, "Nome da empresa", class: "text-gray font-semibold" %>
-        <%= f.search_field :name_cont, class: "form-control" %>
-      </div>
-      <div>
-        <%= f.label :career_eq, "Especialidade", class: "text-gray font-semibold" %>
-        <%= f.select :career_eq, options_from_collection_for_select(@careers, :second, :first, @q.career_eq),
-                              { include_blank: true}, { class: "form-control" } %>
-      </div>
-      <div>
-        <%= f.label :contract_eq, "Modalidade", class: "text-gray font-semibold" %>
-        <%= f.select :contract_eq, options_from_collection_for_select(@contracts, :second, :first, @q.contract_eq),
-                              { include_blank: true}, { class: "form-control" } %>
-      </div>
-      <div>
-        <%= f.label :state_cont, "Localidade", class: "text-gray font-semibold" %>
-        <%= f.select :state_eq, options_from_collection_for_select(Brazil.states, :first, :second, @q.state_eq),
-                              { include_blank: true}, { class: "form-control" } %>
-      </div>
+          <%= search_form_for @q, url: root_path, method: :get do |f| %>
+            <div class="flex space-x-11">
+              <div>
+                <%= f.label :name_cont, "Nome da empresa", class: "text-gray font-semibold" %>
+                <%= f.search_field :name_cont, class: "form-control" %>
+              </div>
+              <div>
+                <%= f.label :career_eq, "Especialidade", class: "text-gray font-semibold" %>
+                <%= f.select :career_eq, options_from_collection_for_select(@careers, :second, :first, @q.career_eq),
+                                      { include_blank: true}, { class: "form-control" } %>
+              </div>
+              <div>
+                <%= f.label :contract_eq, "Modalidade", class: "text-gray font-semibold" %>
+                <%= f.select :contract_eq, options_from_collection_for_select(@contracts, :second, :first, @q.contract_eq),
+                                      { include_blank: true}, { class: "form-control" } %>
+              </div>
+              <div>
+                <%= f.label :state_cont, "Localidade", class: "text-gray font-semibold" %>
+                <%= f.select :state_eq, options_from_collection_for_select(Brazil.states, :first, :second, @q.state_eq),
+                                      { include_blank: true}, { class: "form-control" } %>
+              </div>
 
-      <%= f.submit "Pesquisar", class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 mt-8" %>
-    </div>
-  <% end %>
-</div>
-
+              <%= f.submit "Pesquisar", class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 mt-8" %>
+            </div>
+          <% end %>
+        </div>
         <% @positions.each do |position| %>
           <%= render position %>
         <% end %>
