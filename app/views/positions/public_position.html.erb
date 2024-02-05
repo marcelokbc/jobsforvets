@@ -1,0 +1,35 @@
+<section class="py-8 bg-[#f5f5f5]">
+  <div class="container px-10 mx-auto flex justify-center">
+    <div class="pb-16 pt-12 border border-dark-blue rounded-5xl w-10/12">
+      <p class="text-3xl font-heading font-sourcesans font-medium pl-16 text-center mb-4">
+        <%= "#{@position.name} - #{@position.company.name}" %>
+      </p>
+      <p class="text-2xl font-heading font-sourcesans font-medium pl-16">
+        <%= "#{career_name(@position.career)} - #{@position.city} / #{modality(@position)}, #{@position.state} - #{contract_name(@position.contract)}" %>
+      </p>
+      <div class="flex flex-wrap px-9 mb-8 md:mb-0 justify-center text-justify">
+        <div class="ml-5">
+          <%= @position.description %>
+        </div>
+      </div>
+      <div class="p-6">
+        <h4 class="mb-4 block text-center font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+          Compartilhar
+        </h4>
+        <div class="flex justify-center items-center gap-5">
+          <%= render partial: 'shared/social_network', locals: { position: @position } %>
+        </div>
+        <% if user_signed_in? %>
+          <p class="text-center mt-8">
+            <%= "Insira suas informações para se candidatar a essa vaga.#{@position.name}" %>
+          </p>
+          <%= render "apllicants/form" %>
+        <% else %>
+          <p class="text-center mt-8">
+            <%= "Você precisa estar logado para se candidatar a essa vaga." %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
