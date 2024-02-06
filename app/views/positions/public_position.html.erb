@@ -21,9 +21,9 @@
         </div>
         <% if user_signed_in? %>
           <p class="text-center mt-8">
-            <%= "Insira suas informações para se candidatar a essa vaga.#{@position.name}" %>
+            <%= "Insira suas informações para se candidatar a essa vaga #{@position.name}" %>
           </p>
-          <%= render "apllicants/form" %>
+          <%= render partial: 'applicants/form', locals: { applicant: @applicant } %>
         <% else %>
           <p class="text-center mt-8">
             <%= "Você precisa estar logado para se candidatar a essa vaga." %>
