@@ -1,5 +1,5 @@
 class PositionsController < ApplicationController
-  before_action :set_company, :set_I18n_careers, :set_I18n_contracts
+  before_action :set_company, :set_I18n_careers, :set_I18n_contracts, except: [:public_position]
   before_action :set_position, only: [:edit, :show, :update]
 
   def index
@@ -40,6 +40,11 @@ class PositionsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def public_position
+    @position = Position.find_by(slug: params[:slug])
+    @applicant = current_user.applicants.new(position_id: @position.id)
   end
 
   private

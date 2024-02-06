@@ -13,4 +13,16 @@ module PositionsHelper
 
     "#{career_translation} - #{position.city} - #{contract_translation}"
   end
+
+  def career_name(career)
+    I18n.t("activerecord.attributes.position.careers")[career.to_sym]
+  end
+
+  def contract_name(contract)
+    I18n.t("activerecord.attributes.position.contracts")[contract.to_sym]
+  end
+
+  def modality(position)
+    position.remote? ? 'Remoto' : 'Presencial'
+  end
 end

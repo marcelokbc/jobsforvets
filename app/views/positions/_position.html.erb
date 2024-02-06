@@ -1,34 +1,24 @@
 <div class="flex items-center justify-center mt-8">
-    <div class="relative flex w-11/12 h-64 flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-        <div class="relative m-0 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
-            <%= image_tag position.company.logo, alt: "Logo da marca #{position.company.name}", class: 'h-full w-full object-cover' %>
-        </div>
-        <div class="p-6">
+  <div class="relative flex w-11/12 h-64 flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+    <div class="relative m-0 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
+      <%= image_tag position.company.logo, alt: "Logo da marca #{position.company.name}", class: 'h-full w-full object-cover' %>
+    </div>
+      <div class="p-6">
         <h6 class="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased">
-            <%= position.name %>
+          <%= position.name %>
         </h6>
         <h4 class="mb-4 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-            <%= formatted_career_and_contract(position) %>
+          <%= formatted_career_and_contract(position) %>
         </h4>
         <p class="mb-4 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
             A <%= position.name %> está em busca de um(a) veterinário(a) com especialidade em <%= "#{I18n.t('activerecord.attributes.position.careers')[position.career.to_sym]}" %> para atuar em sua unidade no <%= position.city %>.
         </p>
         <div  data-controller="clipboard" class="flex justify-between items-center">
-            <button
-            class="flex select-none items-center gap-2 middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button">
-                Ver mais 
-            </button>
-            <button
-            class="flex select-none items-center gap-2 middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button">
-                Candidatar-se
-            </button>
-            <%= link_to image_tag('social-network/linkedin.svg', class: 'h-8'), "https://www.linkedin.com/sharing/share-offsite/?url=#{url_position(position)}", target: '_blank' %>
-            <%= link_to image_tag('social-network/whatsapp.svg', class: 'h-8'), "https://wa.me/?text=#{text_position(position)}", target: '_blank' %>
-            <%= link_to image_tag('social-network/twitter.svg', class: 'h-8'), "https://twitter.com/intent/tweet?text=#{text_position(position)}", target: '_blank' %>
-            <%= link_to image_tag('social-network/copy.svg', class: 'h-8 share-copy-item'), '#', class: 'copy-url', data: { 'clipboard-text': url_position(position) } %>
+            <%= link_to "Ver mais", public_position_path(position.slug), class: 'flex select-none items-center gap-2 middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none' %>
+            <%= link_to "Candidatar-se", public_position_path(position.slug), class: 'flex select-none items-center gap-2 middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none' %>
+
+            <%= render partial: 'shared/social_network', locals: { position: position } %>
         </div> 
-        </div>
+      </div>
     </div>
 </div>
