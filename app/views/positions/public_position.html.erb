@@ -19,16 +19,22 @@
         <div class="flex justify-center items-center gap-5">
           <%= render partial: 'shared/social_network', locals: { position: @position } %>
         </div>
-        <% if user_signed_in? %>
-          <p class="text-center mt-8">
-            <%= "Insira suas informações para se candidatar a essa vaga #{@position.name}" %>
-          </p>
-          <%= render partial: 'applicants/form', locals: { applicant: @applicant } %>
-        <% else %>
-          <p class="text-center mt-8">
-            <%= "Você precisa estar logado para se candidatar a essa vaga." %>
-          </p>
-        <% end %>
+          <% if user_signed_in? %>
+            <% if @user_applicants.any? { |applicant| applicant.position_id == @position.id } %>
+              <p class="text-center mt-8">
+                Você já se candidatou a essa vaga.
+              </p>
+            <% else %>
+              <p class="text-center mt-8">
+                Insira suas informações para se candidatar a essa vaga <%= @position.name %>.
+              </p>
+              <%= render partial: 'applicants/form', locals: { applicant: @applicant } %>
+            <% end %>
+          <% else %>
+            <p class="text-center mt-8">
+              Você precisa estar logado para se candidatar a essa vaga.
+            </p>
+          <% end %>
       </div>
     </div>
   </div>
