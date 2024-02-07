@@ -1,11 +1,18 @@
 class UserApplicantJob
-  attr_reader :user_id
+  attr_reader :user_id, :position_id
 
-  def initialize(user_id)
+  def initialize(user_id, position_id)
     @user_id = user_id
+    @position_id = position_id
   end
 
   def call
-    Applicant.where(user_id: user_id)
+    find_user_applicants
+  end
+
+  private
+
+  def find_user_applicants
+    Applicant.where(user_id: user_id, position_id: position_id)
   end
 end
