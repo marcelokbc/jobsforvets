@@ -8,6 +8,7 @@ class Position < ApplicationRecord
     before_save :set_slug
     
   has_many :applicants
+  
   private
     
   def self.ransackable_attributes(auth_object = nil)

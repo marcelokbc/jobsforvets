@@ -1,4 +1,4 @@
 <%= link_to image_tag('social-network/linkedin.svg', class: 'h-8'), "https://www.linkedin.com/sharing/share-offsite/?url=#{url_position(position)}", target: '_blank' %>
 <%= link_to image_tag('social-network/whatsapp.svg', class: 'h-8'), "https://wa.me/?text=#{text_position(position)}", target: '_blank' %>
 <%= link_to image_tag('social-network/twitter.svg', class: 'h-8'), "https://twitter.com/intent/tweet?text=#{text_position(position)}", target: '_blank' %>
-<%= link_to image_tag('social-network/copy.svg', class: 'h-8 share-copy-item'), '#', class: 'copy-url', data: { 'clipboard-text': url_position(position) } %>
+<%= link_to image_tag('social-network/copy.svg', class: 'h-8 share-copy-item'), data: { 'clipboard-text': url_position(position) } %>
