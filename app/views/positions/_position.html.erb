@@ -13,15 +13,14 @@
         <p class="mb-4 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
             A <%= position.name %> está em busca de um(a) veterinário(a) com especialidade em <%= "#{I18n.t('activerecord.attributes.position.careers')[position.career.to_sym]}" %> para atuar em sua unidade no <%= position.city %>.
         </p>
-        <div  data-controller="clipboard" class="flex justify-between items-center">
+        <div class="flex justify-between items-center">
             <%= link_to "Ver mais", public_position_path(position.slug), class: 'flex select-none items-center gap-2 middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none' %>
-            <% if user_signed_in? %> 
-                
+            <% if user_signed_in? %>   
               <% if !UserApplicantJob.new(current_user.id, position.id).call %>
                 <%= link_to "Candidatar-se", public_position_path(position.slug), class: 'flex select-none items-center gap-2 middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none' %>
               <% end %>
             <% end %>
-          <div class="flex justify-center items-center gap-5">
+          <div data-controller="clipboard" class="flex justify-center items-center gap-5">
             <%= render partial: 'shared/social_network', locals: { position: position } %>
           </div>
         </div> 

@@ -20,7 +20,7 @@
           <%= render partial: 'shared/social_network', locals: { position: @position } %>
         </div>
           <% if user_signed_in? %>
-            <% if @user_applicants.any? { |applicant| applicant.position_id == @position.id } %>
+            <% if @user_applicants %>
               <p class="text-center mt-8">
                 Você já se candidatou a essa vaga.
               </p>
