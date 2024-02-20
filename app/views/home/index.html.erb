@@ -21,7 +21,7 @@
                                       { include_blank: true}, { class: "form-control" } %>
               </div>
               <div>
-                <%= f.label :state_cont, "Localidade", class: "text-gray font-semibold" %>
+                <%= f.label :state_eq, "Localidade", class: "text-gray font-semibold" %>
                 <%= f.select :state_eq, options_from_collection_for_select(Brazil.states, :first, :second, @q.state_eq),
                                       { include_blank: true}, { class: "form-control" } %>
               </div>
