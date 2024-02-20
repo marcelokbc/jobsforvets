@@ -19,7 +19,7 @@ class PositionsController < ApplicationController
   def create
     @position = @company.positions.new(params_position)
     if @position.save
-      flash[:notice] = "Vaga cadastrada com sucesso!"
+      flash[:success] = "Vaga cadastrada com sucesso!"
       redirect_to positions_path
     else
       render :form, status: :unprocessable_entity
@@ -44,10 +44,15 @@ class PositionsController < ApplicationController
 
   def public_position
     @position = Position.find_by(slug: params[:slug])
-    @applicant = current_user.applicants.new(position_id: @position.id) if user_signed_in?
-    @user_applicants = UserApplicantJob.new(current_user.id, @position.id).call if user_signed_in?
+    if user_signed_in?
+      @applicant = current_user.applicants.new(position_id: @position.id)
+      @user_applicants = UserApplicantJob.new(current_user.id, @position.id).call
+      logger.debug "@applicant: #{@applicant.inspect}" # Add this line for debugging
+    end
   end
-
+  
+  
+  
   private
     def set_company
       redirect_to new_company_path if current_user.company.nil?

@@ -2,7 +2,7 @@ pt-BR:
   activerecord:
     attributes:
       applicant:
-        name: Nome
-        email: Email
-        phone: Telefone
+        name: Nome Completo
+        email: Email 
+        phone: Telefone 
       
