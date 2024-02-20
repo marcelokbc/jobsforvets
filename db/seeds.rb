@@ -15,15 +15,13 @@ company.logo.attach(io: File.open("#{Rails.root}/app/assets/images/logo-vet.png"
 company.save!
 
 # cidade e estado
-cities_and_states = [
-    ["São Paulo", "SP"],
-    ["Rio de Janeiro", "RJ"],
-    ["Belo Horizonte", "MG"],
-]
+cities_and_states = [['MG', 'Minas Gerais'], ['SP', 'Sao Paulo'], ['RJ', 'Rio de Janeiro']]
+
+# criar vagas
 5.times do |t|
     city_and_state = cities_and_states.sample
     Position.create!(
-        name: "Vaga #{t}",
+        name: "Vaga para Médico Veterinário #{t}",
         career: (0..7).to_a.sample,
         contract: (0..2).to_a.sample,
         remote: false,
@@ -31,8 +29,8 @@ cities_and_states = [
         state: city_and_state.first,
         city: city_and_state.last,
         company_id: company.id,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec odio et nunc lacinia, aliquam.",
-        summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec odio et nunc lacinia, aliquam."
+        description: "A Vet Company é uma empresa que atua no mercado de saúde animal. Estamos em busca de um profissional para atuar como médico veterinário.",
+        summary: "Médico Veterinário",
     )
 end
 puts "Dados criados com sucesso!"
