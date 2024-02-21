@@ -5,7 +5,7 @@
         <div class="flex flex-wrap items-center">
           <div class="relative w-full px-4 max-w-full flex-grow flex-1">
             <h3 class="font-semibold text-3xl text-gray-700">
-              <%= t('activerecord.models.position') %>
+              Minhas <%= t('activerecord.models.position') %>
             </h3>
           </div>
           <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
@@ -34,6 +34,9 @@
                 <%= t('activerecord.attributes.position.publish') %>
               </th>
               <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Candidaturas
+              </th>
+              <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                 Ações
               </th>
             </tr>
@@ -46,16 +49,19 @@
                   <%= position.name %>
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <%= t("activerecord.attributes.position.careers.#{position.career}") %>
+                  <%= career_name(position.career) %>
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <%= position.city %>, <%= position.state %>
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <%= t("activerecord.attributes.position.contracts.#{position.contract}") %>
+                  <%= contract_name(position.contract) %>
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <%= position.publish ? t('sim') : t('não') %>
+                </td>
+                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  <%= link_to "Candidaturas (#{position.applicants.count})", position_applicants_path(position), class: "middle none center rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" %>
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <%= link_to edit_position_path(position), class: "middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" do %>
