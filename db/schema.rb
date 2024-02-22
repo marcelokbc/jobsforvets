@@ -56,7 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_02_135226) do
     t.string "name"
     t.string "email"
     t.string "phone"
-    t.string "curriculum"
     t.bigint "user_id", null: false
     t.bigint "position_id", null: false
     t.datetime "created_at", null: false

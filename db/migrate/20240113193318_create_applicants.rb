@@ -4,7 +4,6 @@ class CreateApplicants < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :email
       t.string :phone
-      t.string :curriculum
       t.references :user, null: false, foreign_key: true
       t.references :position, null: false, foreign_key: true
 
