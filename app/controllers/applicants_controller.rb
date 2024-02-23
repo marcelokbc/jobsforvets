@@ -20,7 +20,7 @@ class ApplicantsController < ApplicationController
     @position = Position.find(applicant_params[:position_id])
     if @applicant.save
       flash[:success] = "Você se candidatou a vaga com sucesso!"
-      redirect_to new_applicant_path(position_id: @applicant.position_id)
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
       flash[:error] = "Houve um erro ao se candidatar a vaga! Tente novamente."
