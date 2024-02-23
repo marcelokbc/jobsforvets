@@ -21,7 +21,7 @@ cities_and_states = [['MG', 'Minas Gerais'], ['SP', 'Sao Paulo'], ['RJ', 'Rio de
 5.times do |t|
     city_and_state = cities_and_states.sample
     Position.create!(
-        name: "Vaga para Médico Veterinário #{t}",
+        name: Faker::Creature::Animal.name,
         career: (0..7).to_a.sample,
         contract: (0..2).to_a.sample,
         remote: false,
