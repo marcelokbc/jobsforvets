@@ -4,10 +4,14 @@ class ApplicantsController < ApplicationController
     @applicants = @position.applicants
     respond_to do |format|
       format.html
-      format.csv do
-        send_data @position.applicants.as_csv, filename: "applicants.csv"
+      format.csv { send_data @position.applicants.as_csv, filename: "applicants.csv" }
+      format.zip do
+        UserMailer.export_resume(current_user, @position).deliver_now
+        flash[:success] = "Curriculos exportados com sucesso! Verifique seu email."
+        redirect_to action: :index
       end
     end
+    @pagy, @applicants = pagy(@applicants)
   end
 
   def new

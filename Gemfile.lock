@@ -291,6 +291,7 @@ DEPENDENCIES
   ransack
   redis (~> 4.0)
   rspec-rails
+  rubyzip
   selenium-webdriver
   simple_form
   spring

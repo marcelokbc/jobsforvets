@@ -24,6 +24,7 @@ gem "simple_form"
 gem "devise"
 
 gem "ransack"
+gem "rubyzip"
 
 group :development, :test do
   gem "pry-byebug"
