@@ -4,7 +4,7 @@ class PositionsController < ApplicationController
 
   def index
     @positions = @company.positions
-    # @pagy, @positions = pagy(@positions)
+    @pagy, @positions = pagy(@positions)
   end
 
   def show
