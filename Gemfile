@@ -32,7 +32,10 @@ group :development, :test do
   gem "pry-rails"
   gem "awesome_print"
   gem "rspec-rails"
+  gem "solargraph"
   gem "faker"
+  gem "factory_bot_rails"
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do
@@ -46,4 +49,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "database_cleaner-active_record"
 end
