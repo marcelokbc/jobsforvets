@@ -1,4 +1,7 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => "/sidekiq"
   resources :companies, only: [:new, :edit, :create, :update]
   resources :positions do 
     resources :applicants, only: [:index]
