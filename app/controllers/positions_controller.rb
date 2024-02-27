@@ -46,7 +46,7 @@ class PositionsController < ApplicationController
     @position = Position.find_by(slug: params[:slug])
     if user_signed_in?
       @applicant = current_user.applicants.new(position_id: @position.id)
-      @user_applicants = UserApplicantJob.new(current_user.id, @position.id).call
+      @user_applicants = UserApplicantService.new(current_user.id, @position.id).call
       logger.debug "@applicant: #{@applicant.inspect}" # Add this line for debugging
     end
   end
