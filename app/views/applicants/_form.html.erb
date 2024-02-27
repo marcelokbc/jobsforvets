@@ -7,7 +7,7 @@
       <div class="flex flex-wrap px-9 mb-8 md:mb-0">
         <div class="mt-5 md:col-span-2 md:mt-0 w-full">
         <%= simple_form_for @applicant, remote: true do |f| %>
-          <%= f.error_notification %>
+          <%= f.error_notification class: "text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-400" %>
             <div class="overflow-hidden">
               <div class="px-4 py-5 sm:p-6">
                 <div class="grid grid-cols-6 gap-6">
