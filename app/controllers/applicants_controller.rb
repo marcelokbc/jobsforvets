@@ -26,8 +26,8 @@ class ApplicantsController < ApplicationController
       flash[:success] = "Você se candidatou a vaga com sucesso!"
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
       flash[:error] = "Houve um erro ao se candidatar a vaga! Tente novamente."
+      render :new, status: :unprocessable_entity
     end
   end
   private 
