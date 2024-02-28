@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_one :company
   has_many :applicants
 
+  enum role: { admin: 0, company: 1, candidate: 2 }
+
+  validates :role, presence: true
+
   after_create :welcome_email
 
   private

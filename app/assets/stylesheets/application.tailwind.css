@@ -20,6 +20,10 @@ select {
   @apply block w-full sm:text-sm border-gray-300 rounded-md;
 }
 
+legend {
+  @apply text-base font-medium text-gray-900 mb-2;
+}
+
 textarea {
   width: 100%;
 }
