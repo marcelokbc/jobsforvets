@@ -25,10 +25,18 @@ pt-BR:
         unconfirmed_email: E-mail não confirmado
         unlock_token: Token de desbloqueio
         updated_at: Atualizado em
+        role: Usuário
+        roles:
+          admin: Administrador
+          company: Empresa
+          candidate: Candidato
     models:
       user:
         one: Usuário
         other: Usuários
+        role:
+          one: Usuário
+          other: Usuários
   devise:
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso.
@@ -104,6 +112,7 @@ pt-BR:
         we_need_your_current_password_to_confirm_your_changes: precisamos da sua senha atual para confirmar suas mudanças
       new:
         sign_up: Inscrever-se
+        role: Usuário
       signed_up: Bem vindo! Você realizou seu registro com sucesso.
       signed_up_but_inactive: Você se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.
       signed_up_but_locked: Você se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada.

@@ -7,11 +7,7 @@ Rails.application.routes.draw do
     resources :applicants, only: [:index]
   end
   resources :applicants, only: [:new, :create]
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   root "home#index"
   get "/vaga/:slug", action: :public_position, controller: :positions, as: :public_position
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

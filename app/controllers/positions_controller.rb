@@ -47,11 +47,8 @@ class PositionsController < ApplicationController
     if user_signed_in?
       @applicant = current_user.applicants.new(position_id: @position.id)
       @user_applicants = UserApplicantService.new(current_user.id, @position.id).call
-      logger.debug "@applicant: #{@applicant.inspect}" # Add this line for debugging
     end
   end
-  
-  
   
   private
     def set_company
