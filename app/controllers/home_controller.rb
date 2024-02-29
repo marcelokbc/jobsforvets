@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @q = Position.ransack(params[:q])
-    @positions = @q.result(distinct: true)
+    @positions = @q.result(distinct: true).order(created_at: :asc)
     @positions = @positions.where('UPPER(name) LIKE ?', "%#{params[:name].upcase}%") if params[:name].present?
     @contracts = [["CLT", 0 ], ["PJ", 1], ["A combinar", 2]]
     @careers = [["Clínico Geral", 0], ["Cirurgia", 1], ["Ortopedia", 2], ["Dermatologia", 3], ["Cardiologia", 4], ["Oftalmologia", 5], ["Nutrição", 6], ["Outro", 7]]

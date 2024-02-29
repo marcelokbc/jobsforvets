@@ -5,7 +5,9 @@ class Applicant < ApplicationRecord
   belongs_to :position
   has_one_attached :resume
 
-  validates :name, :email, :phone, :position_id, :resume, presence: true
+  validates :first_name, :last_name, :email, :phone, :position_id, 
+            :resume, :zipcode, :street, :number, :neighborhood, :city,
+            :state, presence: true
 
   validate :correct_resume_mime_type
 
