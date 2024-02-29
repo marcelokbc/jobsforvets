@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Iniciando a criação de dados..."
 # criar um usuário
-user = User.create!(email: "user@gmail.com", password: "123456", password_confirmation: "123456")
+user = User.create!(email: "user@gmail.com", password: "123456", password_confirmation: "123456", role: 1)
 
 # criar uma empresa
 company = Company.new(name: "Vet Company", url: "www.google.com", user_id: user.id)

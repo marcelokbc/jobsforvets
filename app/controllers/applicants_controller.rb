@@ -41,6 +41,19 @@ class ApplicantsController < ApplicationController
   end
 
   def applicant_params
-    params.require(:applicant).permit(:name, :email, :phone, :resume, :position_id)
+    params.require(:applicant).permit(
+      :first_name, 
+      :last_name, 
+      :email, 
+      :phone, 
+      :resume, 
+      :position_id,
+      :zipcode,
+      :street,
+      :number,
+      :neighborhood,
+      :city,
+      :state,
+    )
   end
 end

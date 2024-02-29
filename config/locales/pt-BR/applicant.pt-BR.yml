@@ -2,8 +2,19 @@ pt-BR:
   activerecord:
     attributes:
       applicant:
-        name: Nome Completo
-        email: Email 
+        first_name: Nome
+        last_name: Sobrenome
+        social_name: Nome Social
         phone: Telefone 
+        linkedin: Linkedin
+        cpf: CPF
+        email: Email 
+        zipcode: CEP
+        street: Rua
+        number: Número
+        complement: Complemento
+        state: Estado
+        neighborhood: Bairro
+        city: Cidade
         resume: Currículo
       
