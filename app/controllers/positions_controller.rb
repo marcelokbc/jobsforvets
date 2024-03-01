@@ -1,6 +1,6 @@
 class PositionsController < ApplicationController
   before_action :set_company, :set_I18n_careers, :set_I18n_contracts, except: [:public_position]
-  before_action :set_position, only: [:edit, :show, :update]
+  before_action :set_position, only: [:edit, :show, :update, :destroy]
 
   def index
     @positions = @company.positions
@@ -40,6 +40,12 @@ class PositionsController < ApplicationController
   end
 
   def destroy
+    if @position.destroy
+      flash[:notice] = "Vaga excluída com sucesso!"
+    else
+      flash[:alert] = "Erro ao excluir vaga!"
+    end
+    redirect_to positions_path
   end
 
   def public_position
