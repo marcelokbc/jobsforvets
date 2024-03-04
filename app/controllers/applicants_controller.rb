@@ -30,6 +30,7 @@ class ApplicantsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
   private 
 
   def set_position
@@ -54,6 +55,7 @@ class ApplicantsController < ApplicationController
       :neighborhood,
       :city,
       :state,
+      :status,
     )
   end
 end
