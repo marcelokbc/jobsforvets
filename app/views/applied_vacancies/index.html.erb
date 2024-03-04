@@ -4,18 +4,8 @@
       <div class="flex flex-wrap px-9 md:mb-4 mb-4">
         <div class="w-full md:w-1/2">
           <h2 class="text-3xl font-heading font-sourcesans font-medium text-gray-500">
-            <%= "Candidaturas #{career_name(@position.career)}" %>
+            Vagas Aplicadas
           </h2>
-        </div>
-        <div class="w-full md:w-1/2 max-w-max md:ml-auto">
-          <% if @applicants.present? %>
-            <%= link_to position_applicants_path(@position, format: 'csv'), class:"middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" do %>
-              Exportar CSV
-            <% end %>
-            <%= link_to position_applicants_path(@position, format: 'zip'), class:"middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" do %>
-              Exportar Currículos
-            <% end %>
-          <% end %>
         </div>
       </div>
       <div class="overflow-x-auto my-10">
@@ -24,16 +14,16 @@
             <thead>
               <tr>
                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Nome
+                  Nome da Vaga
                 </th>
                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Email
+                    Empresa
                 </th>
                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Telefone
+                    Data de Aplicação
                 </th>
                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Currículo
+                    Status
                 </th>
               </tr>
             </thead>
@@ -42,24 +32,24 @@
               <% @applicants.each do |applicant| %>
                 <tr>
                   <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                    <%= applicant.first_name %> <%= applicant.last_name %>
+                    <%= applicant.position.name %>
                   </td>
                   <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <%= applicant.email %>
+                    <%= applicant.position.company.name %>
                   </td>
                   <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <%= applicant.phone %>
+                    <%= applicant.created_at.strftime("%d/%m/%Y") %>
                   </td>
-                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <%= link_to rails_blob_path(applicant.resume, disposition: "attachment"), class:"middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" do %>
-                      Download
-                    <% end %>
+                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <span class="<%= applicant_status_color(applicant.status) %> text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-white">
+                        <%= applicant_status_text(applicant.status) %>
+                    </span>
                   </td>
                 </tr>
               <% end %>
             </tbody>
           </table>
-          <%== pagy_nav(@pagy) %>
+          <%#== pagy_nav(@pagy) %>
         </div>
       </div>
     </div>
