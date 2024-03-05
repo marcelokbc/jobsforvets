@@ -14,6 +14,8 @@ module ApplicationHelper
     case status
     when 'pending'
       'bg-yellow-500'
+    when 'waiting_for_feedback'
+      'bg-blue-500'
     when 'approved'
       'bg-green-500'
     when 'rejected'
@@ -27,6 +29,8 @@ module ApplicationHelper
     case status
     when 'pending'
       'Pendente'
+    when 'waiting_for_feedback'
+      'Aguardando Feedback'
     when 'approved'
       'Aprovado'
     when 'rejected'

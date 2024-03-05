@@ -5,7 +5,7 @@ class Applicant < ApplicationRecord
   belongs_to :position
   has_one_attached :resume
 
-  enum status: { pending: 0, approved: 1, rejected: 2 }
+  enum status: { pending: 0, waiting_for_feedback: 1, approved: 2, rejected: 3 }
 
   validates :first_name, :last_name, :email, :phone, :position_id, 
             :resume, :zipcode, :street, :number, :neighborhood, :city,
