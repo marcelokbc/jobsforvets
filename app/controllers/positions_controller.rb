@@ -55,6 +55,14 @@ class PositionsController < ApplicationController
       @user_applicants = UserApplicantService.new(current_user.id, @position.id).call
     end
   end
+
+  def update_applicants_status
+    @position = Position.find(params[:id])
+    applicants_ids = params[:position][:applicants_status].split(",").reject(&:blank?)
+    UpdateVacancyStatusService.new(@position).call
+    flash[:notice] = "Status dos candidatos atualizado com sucesso!"
+    redirect_to positions_path
+  end  
   
   private
     def set_company
