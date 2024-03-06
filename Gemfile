@@ -23,6 +23,7 @@ gem "bootsnap", require: false
 gem "figaro"
 gem "simple_form"
 gem "devise"
+gem "pundit", "~> 2.2"
 
 gem "ransack"
 gem "rubyzip"
