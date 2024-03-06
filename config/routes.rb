@@ -2,6 +2,16 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
+
+  namespace :admin do
+    resources :dashboards, only: [:index]
+    resources :users
+    resources :companies do 
+      resources :positions, only: [:index]
+    end
+    root to: "dashboards#index"  # Updated from "dashboard#index" to "dashboards#index"
+  end
+  
   
   resources :companies, only: [:new, :edit, :create, :update]
   resources :positions do 
