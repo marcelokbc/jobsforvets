@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @q = Position.ransack(params[:q])
     @positions = @q.result(distinct: true).order(created_at: :asc)

@@ -16,7 +16,7 @@
         <div class="flex justify-between items-center">
             <%= link_to "Ver mais", public_position_path(position.slug), class: 'flex select-none items-center gap-2 middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none' %>
             <% if user_signed_in? %>   
-              <% if !UserApplicant.new(current_user.id, position.id).call %>
+              <% if !UserApplicantService.new(current_user.id, position.id).call %>
                 <div class="flex justify-center items-center"> 
                   <%=  link_to "Candidatar-se",
                   new_applicant_path(position_id: position.id),

@@ -1,10 +1,12 @@
 module Admin
   class DashboardsController < BaseController
     def index
-      @companies = Company.all
+      # preciso saber quantas empresas, usuários, vagas e candidatos existem
+      @companies_count = Company.count
+      @company_name = Company.all.map(&:name).join(', ')
       @users = User.all
-      @positions = Position.all
+      @positions_count = Position.count
       @applicants = Applicant.all
-    end
+    end    
   end
 end

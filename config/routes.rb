@@ -2,7 +2,8 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
-
+  devise_for :users, controllers: { registrations: "registrations" }
+  
   namespace :admin do
     resources :dashboards, only: [:index]
     resources :users
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
   resources :applicants, only: [:new, :create]
     resources :applied_vacancies, only: [:index]
 
-  devise_for :users, controllers: { registrations: "registrations" }
   root "home#index"
   get "/vaga/:slug", action: :public_position, controller: :positions, as: :public_position
 end

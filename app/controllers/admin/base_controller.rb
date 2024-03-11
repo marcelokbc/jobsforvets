@@ -2,6 +2,8 @@ module Admin
   class BaseController < ApplicationController
     before_action :check_admin
 
+    layout :layout
+
     private
 
     def layout
