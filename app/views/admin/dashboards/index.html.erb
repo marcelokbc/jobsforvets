@@ -1,2 +1,82 @@
-<h1>Estou aqui</h1>
-```
+<section class="py-8 bg-[#f5f5f5] h-min-screen p-8">
+  <div class="min-h-screen">
+    <div>
+      <div class="text-xl font-bold text-purple pl-8">
+        <p>DASHBOARD - <%= "#{@company_name}"%></p>
+      </div>
+
+      <div class="flex w-full">
+        <div class="p-7 pt-6 border border-r rounded-3xl w-3/12 m-5">
+          <div><p class="text-xl font-bold text-purple">Empresas</p></div>
+
+          <div class="font-bold pt-4 text-9xl">
+            <div><%= @companies_count %></div>
+          </div>
+        </div>
+        <div class="p-7 pt-6 border border-purple rounded-3xl w-3/12 m-5 flex-col">
+          <p class="text-xl font-bold text-purple">Vagas</p>
+
+          <div class="text-5xl font-bold pt-4">
+            <%= @positions_count %>
+          </div>
+        </div>
+
+        <div class="p-7 pt-6 border border-purple rounded-3xl w-3/12 m-5">
+          <p class="text-xl font-bold text-purple">INDICADOR 3</p>
+        </div>
+
+        <div class="p-7 pt-6 border border-purple rounded-3xl w-3/12 m-5">
+          <p class="text-xl font-bold text-purple">INDICADOR 4</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="flex w-full">
+      <div class="p-7 pt-6 border border-purple rounded-3xl m-5 w-full align-center">
+        <div class="flex flex-wrap px-9 md:mb-0">
+          <div class="w-full md:w-3/4">
+            <p class="text-3xl font-bold font-sourcesans text-purple">Candidatos que se inscreveram na vaga </p>
+          </div>
+        </div>
+
+          <div class="overflow-x-auto my-10">
+            <div class="inline-block min-w-full overflow-hidden">
+              <div class="overflow-x-auto pl-5">
+                <table class="table table-zebra w-full my-4">
+                  <thead>
+                    <tr>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Nome</th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Email</th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Cidade</th>
+                    </tr>
+                  </thead>
+
+                <tbody>
+                <% @applicants.each do |applicant| %>
+                  <tr>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700"> <%= applicant.first_name %> </td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700"><%= applicant.user.email %></td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700"><%= applicant.city %></td>
+                  </tr>
+                <% end %>
+                </tbody>
+                    <div class="border-b-2 border-dark-blue"></div>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <%# <div class="flex flex-col text-end mr-6 pr-4 text-sm">
+        <div class="">
+          <i class="fas fa-long-arrow-down"></i>
+            <button>Exportar PDF</button>
+        </div>
+        <div>
+          <i class="far fa-calendar"></i>
+            <button>Exportar para o Google Calendar</button>
+        </div>
+      </div> %>
+    </div>
+  </div>
+</section>

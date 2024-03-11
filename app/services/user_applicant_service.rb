@@ -1,4 +1,4 @@
-class UserApplicant
+class UserApplicantService
   attr_reader :user_id, :position_id
 
   def initialize(user_id, position_id)
