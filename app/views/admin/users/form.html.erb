@@ -1,0 +1,78 @@
+<section class="py-8 bg-[#f5f5f5] h-full">
+  <div class="container px-10 mx-auto flex justify-center">
+    <div class="pb-16 pt-12 border border-dark-blue rounded-3xl w-10/12">
+      <p class="text-3xl font-heading font-sourcesans font-medium pl-16">
+        <% if action_name == 'show' %>
+          <p class="pl-16 text-3xl font-heading font-sourcesans font-medium"> Visualizar usuário </p>
+        <% elsif action_name == 'edit' %>
+          <p class="pl-16 text-3xl font-heading font-sourcesans font-medium"> Editar usuário </p>
+        <% else %>
+          <p class="pl-16 text-3xl font-heading font-sourcesans font-medium"> Cadastrar usuário </p>
+        <% end %>
+        <div class="flex flex-wrap px-9 mb-8 md:mb-0 justify-center">
+          <div class="mt-5 md:col-span-2 md:mt-0" data-controller="visibility">
+            <%= simple_form_for [:admin, @user], defaults: { disabled: action_name == "show" } do |f| %>
+              <%= f.error_notification %>
+              <div class="overflow-hidden">
+                <div class="px-4 py-5 sm:p-6">
+                  <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-3">
+                      <%= f.input :email,
+                              placeholder: "Nome",
+                              class: "block shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                          %>
+                    </div>
+                    
+                    <div class="col-span-6 sm:col-span-3">
+                      <%= f.input :role,
+                              as: :select,
+                              collection: User.roles.keys.map { |role| [User.human_enum_name(:role, role), role] },
+                              include_blank: false,
+                              selected: @user.role,
+                              class: "w-100 shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                          %>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                      <div class="relative">
+                        <%= f.input :password,
+                                placeholder: "Senha",
+                                class: "shadow appearance-none border border-gray-300 rounded-md w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                            %>
+                        <div class="absolute -bottom-8 right-0 top-0 pr-3 flex items-center">
+                          <svg id="toggle_password_visibility" class="h-5 w-5 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="eye_icon_open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path id="eye_icon_closed" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.816 6.816a8 8 0 00-11.632 10.368l1.977-1.977a4 4 0 015.658-5.658l1.977-1.977zM4.805 5.085A8 8 0 0017.232 17.8l1.977-1.977a10 10 0 01-14.392-13.888l1.978-1.978z"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                      <div class="relative">
+                        <%= f.input :password_confirmation,
+                                placeholder: "Confirmação de senha",
+                                class: "shadow appearance-none border border-gray-300 rounded-md w-full py-2 px-3 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out string optional"
+                        %>
+                        <div class="absolute -bottom-8 right-0 top-0 pr-3 flex items-center">
+                          <svg id="toggle_confirmation_visibility" class="h-5 w-5 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="eye_icon_open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path id="eye_icon_closed" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.816 6.816a8 8 0 00-11.632 10.368l1.977-1.977a4 4 0 015.658-5.658l1.977-1.977zM4.805 5.085A8 8 0 0017.232 17.8l1.977-1.977a10 10 0 01-14.392-13.888l1.978-1.978z"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                      <% if action_name == 'show' %>
+                        <%= link_to "EDITAR", edit_admin_user_path(@user), class: "middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" %>
+                      <% else %>
+                        <%= f.submit "SALVAR", class:"middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" %>
+                      <% end %>
+                      <%= link_to "VOLTAR", admin_users_path(@user), class: "middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

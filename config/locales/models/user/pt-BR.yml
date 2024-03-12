@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    attributes:
+      user:
+        role: 'Tipo de usuário'
+    enums:
+      user:
+        role:
+          admin: 'Administrador'
+          candidate: 'Candidato'
+          company: 'Empresa'
