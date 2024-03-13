@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :companies do 
       resources :positions, only: [:index]
     end
-    root to: "dashboards#index"  # Updated from "dashboard#index" to "dashboards#index"
+    root to: "dashboards#index"
   end
   
   
