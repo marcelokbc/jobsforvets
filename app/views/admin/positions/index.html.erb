@@ -1,0 +1,76 @@
+<section class="py-8 bg-blueGray-50">
+  <div class="container px-4 mx-auto flex justify-center">
+    <div class="p-7 pb-16 pt-12 border border-dark-blue rounded-3xl w-11/12">
+      <div class="flex flex-wrap px-9 md:mb-0">
+        <div class="w-full md:w-1/2">
+          <h3 class="text-3xl font-heading font-sourcesans font-medium text-gray-700">
+            Vagas
+          </h3>
+        </div>
+        <div class="w-full md:w-1/2">
+          <form class="flex">
+            <%= search_form_for @q, url: admin_positions_path, method: :get do |f| %>
+              <div class="relative text-gray-600 focus-within:text-gray-400 mr-4 w-full">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  <%= f.submit "", class: "p-1 focus:outline-none focus:shadow-outline" %>
+                </span>
+                <%= f.search_field :name_cont, class: "py-2 w-full text-sm text-dark rounded-md pl-10 focus:outline-none focus:bg-white focus:text-dark-blue", placeholder: "Pesquisar por Vaga" %>
+              </div>
+                <%= f.select :company_id_eq, options_for_select([['Pesquisar por Empresa', '', {disabled: true, selected: true}]] + @companies.map{ |c| [c.name, c.id] }), {}, { class: "py-2 w-3/4 text-sm text-dark rounded-md focus:outline-none focus:bg-white focus:text-dark-blue" } %>
+            <% end %>
+          </form>
+        </div> 
+      </div>
+
+      <div class="overflow-x-auto my-10">
+        <div class="inline-block min-w-full overflow-hidden ">
+          <table class="table table-zebra w-full my-4">
+            <thead>
+              <tr>
+                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Nome da Vaga
+                </th>
+                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Nome da Empresa
+                </th>
+                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                 Cidade 
+                </th>
+                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Estado
+                </th>
+                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Criada em
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @positions.each do |position| %>
+                <tr>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                    <%= position.name %>
+                  </td>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                    <%= position.company.name %>
+                  </td>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                      <%= position.city %>
+                  </td>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                      <%= position.state %>
+                  </td>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
+                      <%= position.created_at.strftime("%d/%m/%Y") %>
+                  </td>
+                </tr>  
+              <% end %>
+            </tbody>
+          </table>
+          <%== pagy_nav(@pagy) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

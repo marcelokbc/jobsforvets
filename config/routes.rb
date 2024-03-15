@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboards, only: [:index]
     resources :users
-    resources :companies do 
-      resources :positions, only: [:index]
-    end
+    resources :companies 
+    resources :positions, only: [:index]
+    
     root to: "dashboards#index"
   end
   
