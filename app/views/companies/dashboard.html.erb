@@ -1,0 +1,87 @@
+<section class="py-8 bg-[#f5f5f5] h-min-screen p-8">
+  <div class="min-h-screen">
+    <div>
+      <div class="text-xl font-bold text-blue-500 pl-8">
+        <p>DASHBOARD - <%= "#{@company.name} - #{@company.id}" %></p>
+      </div>
+
+      <div class="flex w-full">
+        <div class="p-7 pt-6 border border-dark-500 rounded-3xl w-3/12 m-5 flex-col">
+          <div><p class="text-xl font-bold text-blue-500">Vagas</p></div>
+
+          <div class="font-bold pt-4 text-9xl">
+            <div><%= @positions.count %></div>
+          </div>
+        </div>
+        <div class="p-7 pt-6 border border-dark-500 rounded-3xl w-3/12 m-5">
+          <p class="text-xl font-bold text-blue-500">Vagas sem candidaturas</p>
+          <div class="font-bold pt-4 text-3xl">
+            <div><%=@positions_without_applicants.count%></div>
+          </div> 
+        </div>
+
+        <div class="p-7 pt-6 border border-dark-500 rounded-3xl w-3/12 m-5">
+          <p class="text-xl font-bold text-blue-500">Vagas com candidaturas</p>
+          <div class="font-bold pt-4 text-3xl">
+            <div><%=@positions_with_applicants.count%></div>
+          </div>
+        </div>
+
+        <div class="p-7 pt-6 border border-dark-500 rounded-3xl w-3/12 m-5">
+          <p class="text-xl font-bold text-blue-500">Total de candidaturas</p>
+          <div class="font-bold pt-4 text-3xl">
+            <div><%=@applicants.count%></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="flex w-full">
+      <div class="p-7 pt-6 border border-dark-500 rounded-3xl m-5 w-full align-center">
+        <div class="flex flex-wrap px-9 md:mb-0">
+          <div class="w-full md:w-3/4">
+            <p class="text-3xl font-bold font-sourcesans text-blue-500">Candidaturas por vaga</p>
+          </div>
+        </div>
+
+          <div class="overflow-x-auto my-10">
+            <div class="inline-block min-w-full overflow-hidden ">
+              <div class="overflow-x-auto pl-5">
+                <table class="table table-zebra w-full my-4">
+                  <thead>
+                    <tr>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Nome</th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Vaga</th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Data de inscrição</th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Status</th>
+                    </tr>
+                  </thead>
+
+                <tbody>
+                <% @applicants.each do |applicant| %>
+                  <tr>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700"> <%= applicant.first_name %> <%= applicant.last_name %> </td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700"><%= applicant.position.name %></td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700"><%= applicant.created_at.strftime("%d/%m/%Y") %></td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700"><%= applicant.status %></td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <%# <div class="flex flex-col text-end mr-6 pr-4 text-sm">
+        <div class="">
+          <i class="fas fa-long-arrow-down"></i>
+            <button>Exportar PDF</button>
+        </div>
+        <div>
+          <i class="far fa-calendar"></i>
+            <button>Exportar para o Google Calendar</button>
+        </div>
+      </div> %>
+    </div>
+  </div>
+</section>

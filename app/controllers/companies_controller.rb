@@ -29,6 +29,14 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def dashboard
+    @company = current_user.company
+    @positions = @company.positions
+    @positions_without_applicants = @positions.select { |position| position.applicants.empty? }
+    @positions_with_applicants = @positions.select { |position| position.applicants.any? }
+    @applicants = @positions_with_applicants.map { |position| position.applicants }.flatten
+  end
+
   private
   def company_params
     params.require(:company).permit(:name, :url, :logo)
