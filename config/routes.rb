@@ -25,4 +25,6 @@ Rails.application.routes.draw do
 
   root "home#index"
   get "/vaga/:slug", action: :public_position, controller: :positions, as: :public_position
+  # dashboard para a empresa
+  get "/dashboard", action: :dashboard, controller: :companies, as: :company_dashboard
 end
