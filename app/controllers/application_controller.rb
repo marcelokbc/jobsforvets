@@ -1,16 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
   include Pagy::Backend
   include Pundit::Authorization
-
-  before_action :authenticate_user!
-
+  
+  before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
-  def after_sign_in_path_for(resource)
-    user_redirect
-  end
 
   protected
 
@@ -29,10 +22,22 @@ class ApplicationController < ActionController::Base
     redirect_back(fallback_location: root_path)
   end
 
+  def after_sign_in_path_for(resource)
+    if request.referrer == company_dashboard_url
+      company_dashboard_path
+    elsif request.referrer == admin_dashboards_url
+      admin_root_path
+    else
+      user_redirect
+    end
+  end
+
   def user_redirect
     case current_user.role
     when "admin"
       admin_root_path
+    when "company"
+      company_dashboard_path
     else
       root_path
     end
