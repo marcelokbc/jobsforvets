@@ -6,7 +6,6 @@ ruby "3.1.0"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 gem "sprockets-rails"
-gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -37,6 +36,7 @@ group :development, :test do
   gem "faker"
   gem "factory_bot_rails"
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -44,6 +44,10 @@ group :development do
   gem "listen", "~> 3.3"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+end
+
+group :production do
+  gem 'pg', '>= 1.1'
 end
 
 group :test do
