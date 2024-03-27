@@ -356,7 +356,7 @@ DEPENDENCIES
   jbuilder
   listen (~> 3.3)
   pagy
-  pg (>= 1.5.4)
+  pg (~> 1.2)
   pry-byebug
   pry-rails
   puma (~> 5.0)
@@ -374,7 +374,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets-rails
-  sqlite3
+  sqlite3 (~> 1.4)
   stimulus-rails
   tailwindcss-rails
   turbo-rails
