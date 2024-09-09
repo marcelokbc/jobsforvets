@@ -23,8 +23,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if request.referrer == company_dashboard_url
-      company_dashboard_path
+    if request.referrer == new_company_url
+      new_company_path
     elsif request.referrer == admin_dashboards_url
       admin_root_path
     else
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
     when "admin"
       admin_root_path
     when "company"
-      company_dashboard_path
+      new_company_path
     else
       root_path
     end
