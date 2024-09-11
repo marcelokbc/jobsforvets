@@ -1,7 +1,7 @@
 <div class="flex items-center justify-center mt-8">
   <div class="relative flex w-11/12 h-64 flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
     <div class="relative m-0 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
-      <%= image_tag position.company.logo, alt: "Logo da marca #{position.company.name}", class: 'h-full w-full object-cover' %>
+      <%= image_tag position.company.logo, alt: "Logo da marca #{position.company.name}", class: 'h-64 w-96 object-cover' %>
     </div>
       <div class="p-6">
         <h6 class="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased">
@@ -27,7 +27,7 @@
                 <%#= link_to "Candidatar-se", public_position_path(position.slug), class: 'flex select-none items-center gap-2 middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none' %>
               <% end %>
             <% end %>
-          <div data-controller="clipboard" class="flex justify-center items-center gap-5">
+          <div class="flex justify-center items-center gap-5">
             <%= render partial: 'shared/social_network', locals: { position: position } %>
           </div>
         </div> 
